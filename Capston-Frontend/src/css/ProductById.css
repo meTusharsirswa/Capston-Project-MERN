@@ -1,0 +1,124 @@
+.productscreen {
+  max-width: 1300px;
+  margin: 1rem auto;
+  display: flex;
+}
+
+.productscreen__left {
+  display: flex;
+  flex: 0.8;
+}
+
+.left__image {
+  margin: 1rem;
+  border: 1px solid white;
+  box-shadow: 0px 0px 5px gray;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.left__info {
+  margin: 1rem;
+  flex: 1;
+  background: #fff;
+  height: fit-content;
+  font-size: 0.9rem;
+  border: 1px solid white;
+  box-shadow: 0px 1px 4px gray;
+}
+
+.left__name {
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: 'Merriweather', serif;
+  word-spacing: 3px;
+  /* font-size: 16px; */
+  
+}
+.left_price{
+  font-size: 16px;
+  font-weight: 600;
+}
+.left_price > span{
+  font-weight: 700;
+  word-spacing: 3px;
+}
+.left__info > p,
+.right__info > p {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.left_description{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+.left__info > p:last-child,
+.right__info > p:last-child {
+  border: none;
+}
+
+.productscreen__right {
+  flex: 0.2;
+}
+
+.right__info {
+  width: 250px;
+  margin: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.right__info p {
+  padding: 1rem;
+  /* font-size: 0.8rem; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.right__info p >  {
+  grid-column: 1/-1;
+  width: 100%;
+  padding: 10px 16px;
+  background: #171717;
+  color: #f4f4f4;
+  border: 1px solid #171717;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.add_to_cart_btn , .buy_now_btn{
+  display: flex;
+  justify-content: center;
+  grid-column: 1/-1;
+  width: 100%;
+  padding: 10px 16px;
+  background: #171717;
+  color: #f4f4f4;
+  border: 1px solid #171717;
+  cursor: pointer;
+  border-radius: 5px;
+ }
+.right__info select {
+  padding: 10px 16px;
+}
+
+.success-alert{
+  position: absolute !important;
+  right: 1% !important;
+  top: 1% !important;
+}
+
+.success-alert {
+  opacity: 0; 
+  transition: opacity 0.5s; 
+}
+
+.show-success-alert {
+  opacity: 1;
+}
+.buy_now_btn{
+  background-color: orange !important;
+  border: none;
+  margin-top: 10px;
+}

@@ -1,0 +1,44 @@
+
+.success-alert{
+  position: absolute !important;
+  right: 1% !important;
+  top: 1% !important;
+}
+
+.success-alert {
+  opacity: 0; 
+  transition: opacity 0.5s; 
+}
+/* .login-image{
+  margin-top: 19rem;
+  width: 80%;
+  border: 1px solid white;
+  height: 30%;
+} */
+.show-success-alert {
+  opacity: 1;
+}
+.Login-btn {
+  /* width: 70%; */
+  margin: auto !important;
+  margin-top: 1.5rem !important;
+  /* display: flex !important; */
+  background-color: #fb641b !important;
+  /* max-width: 250px; */
+}
+.login_input_field{
+  min-width: 300px !important;
+  /* max-width: 700px !important; */
+}
+/* .row{
+ column-gap: 55px;
+ row-gap: 15px;
+} */
+.register_container{
+  /* width: 50%; */
+  margin: auto;
+  justify-content: center;
+}
+.navbar-collapse{
+  flex-grow: 0 !important;
+}

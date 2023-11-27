@@ -1,0 +1,69 @@
+.product {
+    width: 280px;
+    padding: 1rem;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    margin: 8px auto ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+ 
+  .dashboard-container{
+    display: grid;
+    /* grid-template-columns: auto auto auto auto ; */
+    justify-content: center;
+    align-items: center;
+  }
+  .product > img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+
+ 
+  
+  .info__price {
+    font-weight: bold;
+  }
+  
+  .info__name {
+    font-size: 1rem;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif !important;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .info__description {
+    font-size: 0.8rem;
+  }
+  
+  .info__button {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #171717;
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #f4f4f4;
+    border: 1px solid #171717;
+    font-size: 1rem;
+  }
+  
+  .info__button:hover {
+    background: #171717;
+    color: #f4f4f4;
+  }
+  
+
+  
+
+  

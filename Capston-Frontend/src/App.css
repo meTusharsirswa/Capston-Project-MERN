@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Playfair+Display&family=Quicksand&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+.success-alert {
+  position: absolute !important;
+  right: 1% !important;
+  top: 1% !important;
+}
+
+.success-alert {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.show-success-alert {
+  opacity: 1;
+}
