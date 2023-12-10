@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "./Section/Navbar";
 import { Link } from "react-router-dom";
 import { formatIndianCurrency } from '../utils';
 import "../css/Dashboard.css";
-
-
+import Navbar from "./Section/Navbar"
+import CircularProgress from '@mui/material/CircularProgress';
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,12 +25,12 @@ const Dashboard = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loding">      <CircularProgress /></div>;
   }
 
   return (
     <>
-      {/* <Navbar /> */}
+  <Navbar/>
       <div className="dashboard-container container">
         <div className="row">
 

@@ -9,13 +9,14 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import IconButton from "@mui/joy/IconButton";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import CircularProgress from "@mui/joy/CircularProgress";
+// import CircularProgress from "@mui/joy/CircularProgress";
 import LinearProgress from "@mui/joy/LinearProgress";
 import Stack from "@mui/joy/Stack";
 import Typography from "@mui/joy/Typography";
 import Check from "@mui/icons-material/Check";
 import Close from "@mui/icons-material/Close";
 import Warning from "@mui/icons-material/Warning";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ProductById = () => {
   const { productId } = useParams();
@@ -96,7 +97,7 @@ const ProductById = () => {
   };
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div className="loding"><CircularProgress/></div>;
   }
 
   return (

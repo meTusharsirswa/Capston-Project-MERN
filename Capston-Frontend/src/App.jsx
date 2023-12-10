@@ -6,13 +6,13 @@ import Dashboard from './Component/Dashboard';
 import AddCart from './Component/AddCart';
 import ProductById from './Component/ProductById';
 import OrderHistory from './Component/OrderHistory';
-import Navbar from './Component/Section/Navbar';
+// import Navbar from './Component/Section/Navbar';
 function App() {
   return (
     <>
 
     <BrowserRouter>
-    <Navbar/>
+    {/* <Navbar/> */}
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
