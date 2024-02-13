@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const BuyProductSchema = new mongoose.Schema({
+const OrderHistorySchema = new mongoose.Schema({
     product_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
@@ -8,4 +8,4 @@ const BuyProductSchema = new mongoose.Schema({
       order_place_time : {type : String}
 },{timestamps : true})
 
-module.exports = mongoose.model("purchased Product" ,BuyProductSchema)
+module.exports = mongoose.model("purchased Product" ,OrderHistorySchema)

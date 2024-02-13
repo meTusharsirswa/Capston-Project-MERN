@@ -5,15 +5,10 @@ import TextField from "@mui/material/TextField";
 
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { Link } from "react-router-dom";
-import Alert from "@mui/joy/Alert";
-import AspectRatio from "@mui/joy/AspectRatio";
-import IconButton from "@mui/joy/IconButton";
-import LinearProgress from "@mui/joy/LinearProgress";
-import Button from "@mui/joy/Button";
 
-import Stack from "@mui/joy/Stack";
-import Typography from "@mui/joy/Typography";
-import Check from "@mui/icons-material/Check";
+import Button from "@mui/joy/Button";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 
@@ -26,7 +21,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [first_name, setfirst_name] = useState("");
   const [last_name, setlast_name] = useState("");
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,98 +33,86 @@ const Register = () => {
         password,
       });
 
-      if (response.status) {
+      if (response.data.success) {
         console.log("User Register successful");
-        setShowSuccessAlert(true);
-
-        // setTimeout(() => {
-        // }, 3000);
-
+        toast.success(response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         setTimeout(() => {
-          setShowSuccessAlert(false);
-
-          navigate("/");
-        }, 2000);
+          navigate("/dashboard");
+        }, 1);
       } else {
-        console.error("Registration  failed");
+        console.error("Registration failed");
+        toast.error(
+          error.response.data.message ||
+            "An error occurred during registration",
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
       }
     } catch (error) {
-      console.error("An error occurred while logging in:", error);
+      console.error("An error occurred while registering:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        // Display the specific error message received from the backend API response
+        toast.error(error.response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        // If no specific error message is received, display a generic error message
+        toast.error(
+          "An error occurred while registering. Please try again later.",
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+      }
     }
   };
 
   return (
     <>
-      <Stack
-        spacing={2}
-        sx={{ maxWidth: 400 }}
-        className={`success-alert ${
-          showSuccessAlert ? "show-success-alert" : ""
-        }`}
-      >
-        {" "}
-        {showSuccessAlert && (
-          <Alert
-            size="lg"
-            color="success"
-            variant="solid"
-            invertedColors
-            startDecorator={
-              <AspectRatio
-                variant="solid"
-                ratio="1"
-                sx={{
-                  minWidth: 40,
-                  borderRadius: "50%",
-                  boxShadow: "0 2px 12px 0 rgb(0 0 0/0.2)",
-                }}
-              >
-                <div>
-                  <Check fontSize="xl2" />
-                </div>
-              </AspectRatio>
-            }
-            endDecorator={
-              <IconButton
-                variant="plain"
-                sx={{
-                  "--IconButton-size": "32px",
-                  transform: "translate(0.5rem, -0.5rem)",
-                }}
-              ></IconButton>
-            }
-            sx={{ alignItems: "flex-start", overflow: "hidden" }}
-          >
-            <div>
-              <Typography level="title-lg">Success</Typography>
-              <Typography level="body-sm">
-                User Register Successfully !!!
-              </Typography>
-            </div>
-            <LinearProgress
-              variant="soft"
-              value={40}
-              sx={(theme) => ({
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                color: `rgb(${theme.vars.palette.success.lightChannel} / 0.72)`,
-                "--LinearProgress-radius": "0px",
-              })}
-            />
-          </Alert>
-        )}
-      </Stack>
+      <ToastContainer />
+
       <div className="d-flex ">
         <section className="p-5 m-auto register_container mt-5 ">
           <h2 className="fw-semibold fs-1">Register</h2>
           <p className="fs-6" style={{ width: "85%" }}></p>
 
           <form onSubmit={handleSubmit} className="register_form">
-         
-         <div className="row">
-
+            <div className="row">
               <TextField
                 id="outlined-basic"
                 label="First Name"
@@ -145,11 +127,9 @@ const Register = () => {
                 id="outlined-basic"
                 label="Last Name"
                 variant="outlined"
-                
                 value={last_name}
                 onChange={(e) => setlast_name(e.target.value)}
               />
-   
 
               <TextField
                 id="outlined-basic"
@@ -158,6 +138,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className=" register_input_filed  col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
+                required
               />
 
               <TextField
@@ -168,15 +149,20 @@ const Register = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
-              </div>
+            </div>
 
             {/* <p>
                 By continuing, you agree to Flipkart's{" "}
                 <span className="text-primary">Terms of Use </span> and{" "}
                 <span className="text-primary">Privacy Policy.</span>
               </p> */}
-            <Button type="submit" className="Login-btn" endDecorator={<KeyboardArrowRight />}>
+            <Button
+              type="submit"
+              className="Login-btn"
+              endDecorator={<KeyboardArrowRight />}
+            >
               Register
             </Button>
           </form>

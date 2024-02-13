@@ -1,26 +1,4 @@
-// const express = require("express");
-// const PORT = 4000;
-// const app = express();
-// app.use(express.json());
 
-// const mongoose = require("mongoose");
-// mongoose
-//   .connect("mongodb://127.0.0.1:27017/HotelApi", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   })
-//   .then(() => console.log("Database Connected"))
-//   .catch(error => console.error("Database Connection Error:", error));
-
-// const users = require("./routes/User");
-// const Hotels = require("./routes/Hotel");
-// app.use("/", users);
-
-// app.use('/',Hotels)
-
-// app.listen(PORT, () => {
-//   console.log(`Server is listening on ${PORT}`);
-// });
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");

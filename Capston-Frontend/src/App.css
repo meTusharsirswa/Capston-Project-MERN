@@ -26,3 +26,7 @@
   left: 45%;
 
 }
+.navbar-brand{
+  font-weight: 600;
+  font-family: 'Playfair Display', serif !important;
+}

@@ -1,4 +1,3 @@
-const express = require("express");
 const Product = require("../model/Product");
 
 const CreateProduct = async(req,res)=>{
@@ -29,10 +28,9 @@ const GetProducts = async(req,res)=>{
 const getProductById = async (req, res) => {
     try {
       const product = await Product.findById(req.params.id);
-  
       res.status(200).json({
         status : true,
-        message : "Find By Product Id ",
+        message : "Product Find By Product Id ",
         data : product,
       });
     } catch (error) {

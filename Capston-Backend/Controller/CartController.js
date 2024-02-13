@@ -1,5 +1,5 @@
-const express = require("express");
 const Cart = require("../model/Cart");
+const OrderedHistory = require("../model/OrderedHistory");
 
 const AddCartItem = async (req, res) => {
   try {
@@ -92,9 +92,40 @@ const updateCartProduct = async (req, res) => {
          });
   }
 };
+const proceedToBuy = async (req, res) => {
+  try {
+    // Get all products from the cart
+    const cartProducts = await Cart.find({});
+  
+    // Add each cart product to OrderedHistory
+    for (const cartProduct of cartProducts) {
+      await OrderedHistory.create({
+        product_id: cartProduct.product_id,
+        order_place_time: new Date(),
+      });
+    }
+
+    // Remove all products from the cart
+    await Cart.deleteMany({});
+
+    // Send response
+    res.status(200).json({
+      status: true,
+      message: "Order placed successfully. Cart cleared.",
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   AddCartItem,
   GetCartProduct,
   removeCartProduct,
-  updateCartProduct
+  updateCartProduct,
+  proceedToBuy 
 };
